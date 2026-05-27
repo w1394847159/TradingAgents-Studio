@@ -384,6 +384,16 @@ DEEPSEEK_API_KEY=... python scripts/smoke_structured_output.py deepseek
 
 ---
 
+## 🌐 Community
+
+This project is shared and discussed on the following community:
+
+- [LINUX DO](https://linux.do/) — a real tech community.
+
+Feedback, issues, and suggestions are welcome there.
+
+---
+
 ## 📁 Project layout
 
 ```
