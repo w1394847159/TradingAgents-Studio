@@ -22,8 +22,6 @@
 
 <!-- screenshot:hero -->
 
-> *Screenshot placeholder — drop your hero image at `assets/screenshots/hero.png` and uncomment the line above.*
-
 ---
 
 ## ✨ What makes Studio different
@@ -76,6 +74,7 @@ Studio bundles the muscles a research workbench actually needs:
 | **Scheduled analyses** | Interval / daily / weekly background runs. Analyst + LLM config snapshotted at create time. Auto-disable after 3 consecutive failures so a broken setup can't silently burn through your quota. |
 | **Paper trading** | Virtual account, cash, positions, daily NAV snapshots. **One-click "按此决策模拟下单"** parses the trader proposal's Action + Entry/Target/Stop and opens a virtual position. Enforces A-share T+1. |
 | **决策回放回测 (Decision Replay)** | Event-driven backtest replays Studio's stored Agent decisions over any window — answers *"if I'd followed the agents' Buy/Sell calls, what would my net worth look like?"*. **Zero LLM cost** since it replays history. Reports total return, max drawdown, Sharpe, Sortino, win rate, profit factor, alpha vs benchmark. Each trade links back to its source analysis report. |
+| **决策质量看板 (Decision Quality)** | The next step after backtest. Scores **every individual completed analysis** against real N-day price moves (5 / 30 / 60-day horizons), benchmarked against the regional index. Surfaces overall win-rate / avg α / Sharpe, a **confidence-calibration curve** (does "0.8 confidence" actually win 80%?), breakdowns by **ticker / signal / single analyst / analyst combo / LLM model** (so you can answer *"did adding `capital_flow` improve alpha?"*), and a per-day calendar heatmap. Computed on demand — no extra tables, no LLM cost. |
 | **K-line panel** | Per-ticker drawer from Holdings or Paper rows. Daily + 1/5/15/30/60-min bars, MA(5/10/20) + volume overlays, optional entry/target/stop reference lines, fullscreen mode. |
 | **API key & model picker** | Per-provider model catalog (e.g. DeepSeek V4 Pro / V3.2 thinking / …, Claude Opus 4.7 / Sonnet 4.6 / …). API keys editable from Settings → written through to `.env` so the CLI sees the same values. Keys masked in read path, raw never echoed. |
 
@@ -94,6 +93,7 @@ decision log, checkpoint resume — still works as before.
 | **A-share analysts** | — | `cn_social`, `event`, `capital_flow`, `macro` |
 | **A-share data** | — | AKShare (free) + Tushare Pro (optional) |
 | **Holdings / paper / backtest** | — | ✅ |
+| **Decision-quality dashboard** | — | ✅ (win-rate / alpha / calibration per analyst combo & LLM) |
 | **Scheduled analyses** | — | ✅ |
 | **Natural-language input** | — | ✅ (rule-based + optional LLM) |
 | **LLM providers** | OpenAI / Google / Anthropic | + DeepSeek / 通义 / 智谱 / MiniMax / OpenRouter / Ollama / Azure |
@@ -379,6 +379,16 @@ adapters, structured-output changes), use:
 ```bash
 DEEPSEEK_API_KEY=... python scripts/smoke_structured_output.py deepseek
 ```
+
+---
+
+## 🌐 Community
+
+This project is shared and discussed on the following community:
+
+- [LINUX DO](https://linux.do/) — a real tech community.
+
+Feedback, issues, and suggestions are welcome there.
 
 ---
 

@@ -22,8 +22,6 @@
 
 <!-- screenshot:hero -->
 
-> *截图占位 — 把主视觉图放到 `assets/screenshots/hero.png`,然后取消上面那行注释即可。*
-
 ---
 
 ## ✨ Studio 不一样在哪
@@ -373,6 +371,16 @@ API Key 存在 `.env`,**不**存在这个数据库里。
 ```bash
 DEEPSEEK_API_KEY=... python scripts/smoke_structured_output.py deepseek
 ```
+
+---
+
+## 🌐 社区 / Community
+
+感谢以下社区对本项目的关注与支持：
+
+- [LINUX DO](https://linux.do/) — 一个真正的技术社区,本项目在此分享与讨论。
+
+欢迎在对应社区中提出 issue、反馈与建议。
 
 ---
 
