@@ -135,7 +135,12 @@ async def ws_screen(websocket: WebSocket, run_id: str):
 
 # Serve frontend static files if built
 _STATIC_DIR = Path(__file__).parent.parent / "frontend" / "dist"
+if not _STATIC_DIR.exists():
+    # Fallback to relative path from current working directory (e.g. in Docker/pip editable layouts)
+    _STATIC_DIR = Path("web/frontend/dist").resolve()
+
 if _STATIC_DIR.exists():
+    logger.info(f"Serving frontend static files from {_STATIC_DIR}")
     app.mount("/assets", StaticFiles(directory=str(_STATIC_DIR / "assets")), name="static")
 
     @app.get("/{path:path}")
@@ -146,3 +151,5 @@ if _STATIC_DIR.exists():
         if file_path.is_file():
             return FileResponse(str(file_path))
         return FileResponse(str(_STATIC_DIR / "index.html"))
+else:
+    logger.warning(f"Frontend static directory not found (checked absolute and relative paths). Frontend files will not be served.")
