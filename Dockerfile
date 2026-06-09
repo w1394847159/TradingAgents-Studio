@@ -22,7 +22,7 @@ ENV PATH="/opt/venv/bin:$PATH"
 
 WORKDIR /build
 COPY . .
-RUN pip install --no-cache-dir .
+RUN pip install --no-cache-dir ".[all]"
 
 # ==========================================
 # Stage 3: Final Runtime Image
