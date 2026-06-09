@@ -16,9 +16,9 @@ router = APIRouter(prefix="/api", tags=["settings"])
 # dict only needs to hold the per-request deltas the server saw.
 _overrides: dict = {}
 
-# Project-root .env file shared with the CLI. Resolved relative to this file
-# so the path is correct regardless of where the server is launched from.
 _ENV_PATH = Path(__file__).resolve().parents[3] / ".env"
+if "site-packages" in _ENV_PATH.parts or "dist-packages" in _ENV_PATH.parts:
+    _ENV_PATH = Path(".env").resolve()
 
 # Reverse map: config-key → TRADINGAGENTS_* env var name. Built once from
 # the single-source-of-truth dict in default_config so adding a new override
